@@ -8,6 +8,8 @@ HOST = "127.0.0.1"
 PORT = 4000
 
 def moveServo(id, angle):
+	print(id)
+	print(angle)
 	robot.servo[id].angle = angle
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -22,6 +24,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 if not data:
                     break
 
-                print(str(data).split("'")[1].split("("))
+                data = str(data).split("'")[1].split("(")[1].split(")")[0].split(",")
+                moveServo(int(data[0]),int(data[1]))
     except KeyboardInterrupt:
         s.close()
