@@ -9,9 +9,6 @@
 # testing
 /app/coverage
 
-# production
-/app/build
-
 # misc
 /app/.DS_Store
 /app/.env.local
