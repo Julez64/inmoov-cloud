@@ -28,6 +28,11 @@ class Servo extends React.Component {
             </div>
         )
     }
+    componentDidMount(){
+        if (this.props.socket !== undefined) {
+            this.props.socket.emit('move', {id: this.props.servo, value: this.state.angle})
+        }
+    }
 }
 
 export default Servo
