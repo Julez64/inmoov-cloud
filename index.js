@@ -2,7 +2,7 @@ let app = require('express')()
 let http = require('http').createServer(app)
 let io = require('socket.io')(http)
 let net = require('net')
-let spawn = require('clild_process').spawn
+let spawn = require('child_process').spawn
 
 const pythonProcess = spawn('python3',["./main.py"])
 
