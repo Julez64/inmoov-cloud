@@ -4,6 +4,12 @@ import socket
 
 robot = ServoKit(channels=16)
 
+HOST = "127.0.0.1"
+PORT = 4000
+
+def moveServo(id, angle):
+	robot.servo[id].angle = angle
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
         s.bind((HOST, PORT))
@@ -16,6 +22,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 if not data:
                     break
 
-                print(type(data))
+                print(str(data).split("'")[1].split("("))
     except KeyboardInterrupt:
         s.close()
