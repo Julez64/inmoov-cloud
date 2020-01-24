@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"python3 main.py\" \"npm run server\" \"npm run client\"",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix app"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.0.2",
     "express": "^4.17.1",
+    "nodemon": "^2.0.2",
     "socket.io": "^2.3.0"
   }
 }
