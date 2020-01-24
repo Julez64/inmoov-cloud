@@ -19,35 +19,41 @@ code {
 }
 
 .servo-container {
-	text-align: center;
 	margin: 2em;
-	display: block;
+	display: flex;
 	padding: 2em;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 	border-radius: 5px;
-}
-
-.servo-form-container {
-	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.servo-form-container > * {
-	margin: 5px 0;
+.servo-container > h1 {
+	margin: 0;
+	font-weight: 300;
 }
 
-.servo-form-container > input {
-	padding: 5px;
+.servo-container > button {
+	background-color: white;
+	color: red;
 	border: 0;
-	max-width: 100px;
-	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 	border-radius: 5px;
-	width: 100px;
+	padding: 10px 20px;
+	outline: none;
+	margin-top: 20px;
 }
 
-.servo-form-container > button {
+.servo-container > button:hover {
+	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+}
+
+.servo-container > button:active {
+	background-color: white;
+	box-shadow: none;
+}
+
+.servo-header > button {
 	background-color: white;
 	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 	border: 0;
@@ -57,12 +63,36 @@ code {
 	margin-top: 20px;
 }
 
-.servo-form-container > button:active {
+.servo-form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.servo-form-container > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.servo-form-container > div > * {
+	margin: 5px 0;
+}
+
+.servo-form-container > div > input {
+	padding: 5px;
+	border: 0;
+	max-width: 100px;
+	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+	border-radius: 5px;
+	width: 100px;
+}
+
+.servo-form-container > div > button:active {
 	background-color: white;
 	box-shadow: none;
 }
 
-.servo-form-container > .error-message {
+.servo-form-container > div > .error-message {
 	color: red;
 	margin-top: 10px;
 }

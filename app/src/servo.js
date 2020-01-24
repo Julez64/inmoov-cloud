@@ -26,9 +26,12 @@ class Servo extends React.Component {
 	render() {
 		return (
 			<div className="servo-container">
-				<h1>Channel {this.props.servo}</h1>
+				{this.props.name !== undefined ? (
+					<h1>{this.props.name}</h1>
+				) : (
+					<h1>Channel {this.props.servo}</h1>
+				)}
 				<h3>{this.state.angle}°</h3>
-				<br />
 				<input
 					type="range"
 					min="0"
@@ -39,6 +42,13 @@ class Servo extends React.Component {
 					onMouseUp={this.handleEmit}
 					onKeyDown={this.handleEmit}
 				/>
+				<button
+					className="servo-delete"
+					onClick={() => {
+						this.props.handleDelete(this.props.servo)
+					}}>
+					Delete
+				</button>
 			</div>
 		)
 	}

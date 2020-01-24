@@ -16,6 +16,7 @@ export default class App extends React.Component {
 
 		this.handleInputChange = this.handleInputChange.bind(this)
 		this.handleNewServo = this.handleNewServo.bind(this)
+		this.handleDelete = this.handleDelete.bind(this)
 	}
 	handleInputChange(event) {
 		const target = event.target
@@ -42,7 +43,6 @@ export default class App extends React.Component {
 			this.setState({
 				servos: servos,
 				errorMessage: undefined
-				
 			})
 		} else {
 			this.setState({
@@ -50,35 +50,59 @@ export default class App extends React.Component {
 			})
 		}
 	}
+	handleDelete(id) {
+		let servos = this.state.servos
+
+		servos = servos.filter((servo) => {
+			return servo.id !== id
+		})
+
+		this.setState({
+			servos: servos
+		})
+	}
 	render() {
 		return (
 			<>
-				<div class="servo-form-container">
-					<label for="servoId">Channel</label>
-					<input
-						type="number"
-						id="servoId"
-						name="servoId"
-						min="0"
-						value={this.state.servoId}
-						onChange={this.handleInputChange}
-					/>
-					<label for="servoValue">Initial Angle</label>
-					<input
-						type="number"
-						id="servoAngle"
-						name="servoAngle"
-						min={0}
-						max={180}
-						value={this.state.servoAngle}
-						onChange={this.handleInputChange}
-					/>
+				<div className="servo-header">
+					<div class="servo-form-container">
+						<div>
+						<label for="servoId">Channel</label>
+						<input
+							type="number"
+							id="servoId"
+							name="servoId"
+							min="0"
+							value={this.state.servoId}
+							onChange={this.handleInputChange}
+						/>
+						</div>
+						<div>
+						<label for="servoValue">Initial Angle</label>
+						<input
+							type="number"
+							id="servoAngle"
+							name="servoAngle"
+							min={0}
+							max={180}
+							value={this.state.servoAngle}
+							onChange={this.handleInputChange}
+						/>
+						</div>
+					</div>
 					<button onClick={this.handleNewServo}>Add Servo</button>
-					{this.state.errorMessage !== undefined && <p class="error-message">{this.state.errorMessage}</p>}
+					{this.state.errorMessage !== undefined && (
+						<p class="error-message">{this.state.errorMessage}</p>
+					)}
 				</div>
 				<div className="container">
 					{this.state.servos.map((value) => (
-						<Servo servo={value.id} angle={value.angle} socket={this.state.socket} />
+						<Servo
+							servo={value.id}
+							angle={value.angle}
+							socket={this.state.socket}
+							handleDelete={this.handleDelete}
+						/>
 					))}
 				</div>
 			</>
