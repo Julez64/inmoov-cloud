@@ -3,20 +3,36 @@ let http = require('http').createServer(app)
 let io = require('socket.io')(http)
 let net = require('net')
 
-io.on('connection', (socket) => {
-	let s = net.Socket({ allowHalfOpen: true })
-	s.connect(4000, '127.0.0.1')
 
-	socket.on('move', (data, err) => {
-		//s.write(`(${data.id},${data.value})`)
-		s.write(JSON.stringify((data)))
+let server = net.createServer((c) => {
+	
+	// 'connection' listener.
+	console.log('client connected ')
+	c.setMaxListeners(0)
+	c.on('end', () => {
+		console.log('client disconnected')
 	})
 
-	socket.on('disconnect', (data, end) => {
-		s.end()
+	io.on('connection', (socket) => {
+
+		socket.on('move', (data, err) => {
+			c.write(JSON.stringify((data)))
+		})
+
+		socket.on('disconnect', (data, end) => {
+			c.end()
+		})
 	})
 })
 
+server.on('error', (err) => {
+	throw err
+})
+
+server.listen(4000, () => {
+	console.log('server bound on 4000')
+})
+
 http.listen(8080, () => {
-	console.log("server listening on port 8080")
+	console.log('server listening on port 8080')
 })
