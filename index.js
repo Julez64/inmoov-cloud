@@ -16,8 +16,7 @@ let server = net.createServer((c) => {
 	io.on('connection', (socket) => {
 
 		socket.on('move', (data, err) => {
-			c.write(`(${data.id},${data.value})`)
-
+			c.write(JSON.stringify((data)))
 		})
 
 		socket.on('disconnect', (data, end) => {

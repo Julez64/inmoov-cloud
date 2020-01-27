@@ -1,0 +1,43 @@
+.servo-container {
+	width: 10em;
+	margin: 2em;
+	display: flex;
+	padding: 2em;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+	border-radius: 5px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.servo-container > h1 {
+	margin: 0;
+	font-weight: 300;
+}
+
+.servo-container > button {
+	color: white;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px 20px;
+	outline: none;
+	margin-top: 20px;
+}
+
+.servo-container > button:hover {
+	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+}
+
+.servo-container > button:active {
+	background-color: white;
+	color: black;
+	box-shadow: none;
+}
+
+.add-button {
+	background-color: rgb(0, 160, 0);
+}
+
+.delete-button {
+	background-color: rgb(255, 45, 45);
+}
