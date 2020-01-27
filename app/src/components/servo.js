@@ -1,7 +1,8 @@
-import React from 'react'
-import './servo'
+import React, { Component } from 'react'
 
-class Servo extends React.Component {
+import './styles/servo.css'
+
+export default class Servo extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -12,7 +13,7 @@ class Servo extends React.Component {
 	}
 	componentDidMount() {
 		if (this.props.socket !== undefined) {
-			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle })
+			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone })
 		}
 	}
 	handleChange(event) {
@@ -20,7 +21,7 @@ class Servo extends React.Component {
 	}
 	handleEmit() {
 		if (this.props.socket !== undefined) {
-			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle })
+			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone.id })
 		}
 	}
 	render() {
@@ -43,7 +44,7 @@ class Servo extends React.Component {
 					onKeyDown={this.handleEmit}
 				/>
 				<button
-					className="servo-delete"
+					className="delete-button"
 					onClick={() => {
 						this.props.handleDelete(this.props.servo)
 					}}>
@@ -53,5 +54,3 @@ class Servo extends React.Component {
 		)
 	}
 }
-
-export default Servo

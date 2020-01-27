@@ -1,0 +1,17 @@
+.zone {
+	/*  */
+}
+
+.zone > h1 {
+	font-family: 'Open Sans', cursive;
+	font-weight: 400;
+	margin: 1em 0 0 1em;
+	color: #3a416f;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: start;
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -11,46 +13,46 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.container {
+.input-container {
+	min-height: 75px;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.servo-container {
-	margin: 2em;
-	display: flex;
-	padding: 2em;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
-	border-radius: 5px;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center;
 	align-items: center;
 }
 
-.servo-container > h1 {
-	margin: 0;
-	font-weight: 300;
+.input-container > * {
+	margin: 1.5em 2em;
 }
 
-.servo-container > button {
-	background-color: white;
-	color: red;
+.input-container > button {
+	color: white;
 	border: 0;
 	border-radius: 5px;
 	padding: 10px 20px;
 	outline: none;
-	margin-top: 20px;
-}
-
-.servo-container > button:hover {
 	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
 }
 
-.servo-container > button:active {
+.input-container > button:active {
 	background-color: white;
+	color: black;
 	box-shadow: none;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.input-group > input {
+	padding: 5px;
+	border: 0;
+	box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+	border-radius: 5px;
 }
 
 .servo-header > button {
@@ -92,7 +94,8 @@ code {
 	box-shadow: none;
 }
 
-.servo-form-container > div > .error-message {
+.error-message {
 	color: red;
 	margin-top: 10px;
+	text-align: center;
 }
