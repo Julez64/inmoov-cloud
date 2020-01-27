@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"python3 main.py\" \"npm run server\" \"npm run client-dev\"",
+    "dev": "concurrently \"npm run server\" \"python3 main.py\" \"npm run client-dev\"",
     "server": "nodemon index.js",
     "client": "npm start --prefix app",
     "client-dev": "cd app && npx serve -s -l 3000 build"
