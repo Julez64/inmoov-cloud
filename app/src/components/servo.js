@@ -1,7 +1,8 @@
-import React from 'react'
-import './servo'
+import React, { Component } from 'react'
 
-class Servo extends React.Component {
+import './styles/servo.css'
+
+export default class Servo extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -12,7 +13,7 @@ class Servo extends React.Component {
 	}
 	componentDidMount() {
 		if (this.props.socket !== undefined) {
-			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle })
+			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone })
 		}
 	}
 	handleChange(event) {
@@ -20,15 +21,18 @@ class Servo extends React.Component {
 	}
 	handleEmit() {
 		if (this.props.socket !== undefined) {
-			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle })
+			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone.id })
 		}
 	}
 	render() {
 		return (
 			<div className="servo-container">
-				<h1>Channel {this.props.servo}</h1>
+				{this.props.name !== undefined ? (
+					<h1>{this.props.name}</h1>
+				) : (
+					<h1>Channel {this.props.servo}</h1>
+				)}
 				<h3>{this.state.angle}°</h3>
-				<br />
 				<input
 					type="range"
 					min="0"
@@ -39,9 +43,14 @@ class Servo extends React.Component {
 					onMouseUp={this.handleEmit}
 					onKeyDown={this.handleEmit}
 				/>
+				<button
+					className="delete-button"
+					onClick={() => {
+						this.props.handleDelete(this.props.servo)
+					}}>
+					Delete
+				</button>
 			</div>
 		)
 	}
 }
-
-export default Servo
