@@ -8,7 +8,8 @@ io.on('connection', (socket) => {
 	s.connect(4000, '127.0.0.1')
 
 	socket.on('move', (data, err) => {
-		s.write(`(${data.id},${data.value})`)
+		//s.write(`(${data.id},${data.value})`)
+		s.write(JSON.stringify((data)))
 	})
 
 	socket.on('disconnect', (data, end) => {
