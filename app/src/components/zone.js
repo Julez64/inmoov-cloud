@@ -114,7 +114,7 @@ export default class Zone extends Component {
 						{this.state.servos.map((value) => (
 							<Servo
 								key={value.id}
-								zone={this.props.zone.id}
+								zone={this.props.zone}
 								servo={value.id}
 								angle={value.angle}
 								socket={this.props.socket}
