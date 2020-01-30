@@ -1,7 +1,7 @@
 {
   "name": "servos",
   "version": "0.1.0",
-  "homepage": "https://entrybot64.github.io/servokit-react-gui/",
+  "homepage": "https://entrybot64.github.io/servokit-react-gui",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
