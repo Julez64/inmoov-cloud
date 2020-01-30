@@ -1,8 +1,28 @@
+let cors = require('cors')
 let app = require('express')()
 let http = require('http').createServer(app)
 let io = require('socket.io')(http)
 let net = require('net')
 let shortid = require('shortid')
+
+let corsOptions = {
+	origin: '*',
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions))
+
+app.get('/', (req, res) => {
+	res.end("Welcome on the inmoov controller, feel free to navigate the API at /devices and /browsers to learn more about the current state of the controller.")
+})
+
+app.get('/devices', (req, res) => {
+	res.json(sockets)
+})
+
+app.get('/browsers', (req, res) => {
+	res.json(websockets)
+})
 
 let sockets = []
 let websockets = []
