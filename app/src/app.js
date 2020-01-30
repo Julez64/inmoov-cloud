@@ -8,17 +8,17 @@ export default class App extends React.Component {
 		this.state = {
 			endpoint: 'http://localhost:8080',
 			socket: undefined,
-			zoneId: 0,
+			zoneId: '',
 			zoneName: '',
 			errorMessage: undefined,
-			zones: JSON.parse(localStorage.getItem("zones")) || []
+			zones: JSON.parse(localStorage.getItem('zones')) || []
 		}
 
 		this.handleChange = this.handleChange.bind(this)
 		this.handleAdd = this.handleAdd.bind(this)
 		this.handleDelete = this.handleDelete.bind(this)
 	}
-	handleAdd() {
+	handleAdd(id) {
 		let zones = this.state.zones
 		let zoneExists = false
 
@@ -29,7 +29,7 @@ export default class App extends React.Component {
 		})
 
 		if (zoneExists === false) {
-			zones.push({ id: this.state.zoneId, name: this.state.zoneName })
+			zones.push({ id: id || this.state.zoneId, name: id || this.state.zoneName })
 
 			this.setState({
 				zones: zones,
@@ -41,7 +41,7 @@ export default class App extends React.Component {
 			})
 		}
 
-		localStorage.setItem("zones", JSON.stringify(zones))
+		localStorage.setItem('zones', JSON.stringify(zones))
 	}
 	handleChange(event) {
 		const target = event.target
@@ -69,10 +69,27 @@ export default class App extends React.Component {
 		})
 
 		localStorage.removeItem(id)
-		localStorage.setItem("zones", JSON.stringify(zones))
+		localStorage.setItem('zones', JSON.stringify(zones))
 	}
 	componentDidMount() {
-		this.setState({ socket: SocketIO(this.state.endpoint).connect() })
+		let socket = SocketIO(this.state.endpoint).connect()
+
+		socket.on('new zone', (data, err) => {
+			if (!err) {
+				this.handleAdd(data.id)
+			}
+		})
+
+		socket.on('delete zone', (data, err) => {
+			console.log(data)
+			if (!err) {
+				this.handleDelete(data.id)
+			}
+		})
+
+		this.setState({
+			socket: socket
+		})
 	}
 	render() {
 		return (
@@ -81,10 +98,9 @@ export default class App extends React.Component {
 					<div className="input-group">
 						<label htmlFor="zoneId">Zone ID</label>
 						<input
-							type="number"
+							type="text"
 							id="zoneId"
 							name="zoneId"
-							min="0"
 							value={this.state.zoneId}
 							onChange={this.handleChange}
 						/>
@@ -99,13 +115,20 @@ export default class App extends React.Component {
 							onChange={this.handleChange}
 						/>
 					</div>
-					<button className="add-button" onClick={this.handleAdd}>Add zone</button>
+					<button className="add-button" onClick={this.handleAdd}>
+						Add zone
+					</button>
 				</div>
 				{this.state.errorMessage !== undefined && (
-						<p className="error-message">{this.state.errorMessage}</p>
-					)}
+					<p className="error-message">{this.state.errorMessage}</p>
+				)}
 				{this.state.zones.map((zone) => (
-					<Zone key={zone.id} socket={this.state.socket} zone={zone} handleDelete={this.handleDelete} />
+					<Zone
+						key={zone.id}
+						socket={this.state.socket}
+						zone={zone}
+						handleDelete={this.handleDelete}
+					/>
 				))}
 			</>
 		)

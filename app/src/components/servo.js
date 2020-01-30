@@ -21,7 +21,7 @@ export default class Servo extends Component {
 	}
 	handleEmit() {
 		if (this.props.socket !== undefined) {
-			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone.id })
+			this.props.socket.emit('move', { id: this.props.servo, value: this.state.angle, zone: this.props.zone })
 		}
 	}
 	render() {
