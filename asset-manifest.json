@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/servokit-react-gui/static/css/main.39ef3c07.chunk.css",
-    "main.js": "/servokit-react-gui/static/js/main.195a9df6.chunk.js",
-    "main.js.map": "/servokit-react-gui/static/js/main.195a9df6.chunk.js.map",
+    "main.js": "/servokit-react-gui/static/js/main.f8dbe023.chunk.js",
+    "main.js.map": "/servokit-react-gui/static/js/main.f8dbe023.chunk.js.map",
     "runtime-main.js": "/servokit-react-gui/static/js/runtime-main.1c139d9b.js",
     "runtime-main.js.map": "/servokit-react-gui/static/js/runtime-main.1c139d9b.js.map",
     "static/js/2.f02ee7f7.chunk.js": "/servokit-react-gui/static/js/2.f02ee7f7.chunk.js",
     "static/js/2.f02ee7f7.chunk.js.map": "/servokit-react-gui/static/js/2.f02ee7f7.chunk.js.map",
     "index.html": "/servokit-react-gui/index.html",
-    "precache-manifest.e7077c8e0f0ed886a952e7943dc47f8e.js": "/servokit-react-gui/precache-manifest.e7077c8e0f0ed886a952e7943dc47f8e.js",
+    "precache-manifest.d35fc084206daaf0084265a87ac9ae5c.js": "/servokit-react-gui/precache-manifest.d35fc084206daaf0084265a87ac9ae5c.js",
     "service-worker.js": "/servokit-react-gui/service-worker.js",
     "static/css/main.39ef3c07.chunk.css.map": "/servokit-react-gui/static/css/main.39ef3c07.chunk.css.map",
     "static/js/2.f02ee7f7.chunk.js.LICENSE": "/servokit-react-gui/static/js/2.f02ee7f7.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1c139d9b.js",
     "static/js/2.f02ee7f7.chunk.js",
     "static/css/main.39ef3c07.chunk.css",
-    "static/js/main.195a9df6.chunk.js"
+    "static/js/main.f8dbe023.chunk.js"
   ]
 }
