@@ -24,6 +24,19 @@ def doMove(move):
         moveServo(2, 180)
         moveServo(3, 180)
         moveServo(4, 180)
+    if move == "FuckYou":
+        moveServo(0, 180)
+        moveServo(1, 180)
+        moveServo(2, 0)
+        moveServo(3, 180)
+        moveServo(4, 180)
+    if move == "CallMe":
+        moveServo(0, 0)
+        moveServo(1, 180)
+        moveServo(2, 180)
+        moveServo(3, 180)
+        moveServo(4, 0)
+        
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
