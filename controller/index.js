@@ -79,6 +79,6 @@ server.listen(4000, () => {
 	console.log('Socket server listening on 4000')
 })
 
-http.listen(80, () => {
+http.listen(8080, () => {
 	console.log('Websocket listening on port 80')
 })
