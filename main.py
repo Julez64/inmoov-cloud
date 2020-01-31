@@ -1,4 +1,4 @@
-#from adafruit_servokit import ServoKit
+from adafruit_servokit import ServoKit
 import time
 import socket
 import json
