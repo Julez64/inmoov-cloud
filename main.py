@@ -26,14 +26,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 data = s.recv(1024)
                 if not data:
                     break
-
-                jdata = json.loads(data.decode('utf-8'))
-                id = jdata['id']
-                value = jdata['value']
-
-                moveServo(int(id), int(value))
-
+                try:
+                    jdata = json.loads(data.decode('utf-8'))
+                    id = jdata['id']
+                    value = jdata['value']
+                    moveServo(int(id), int(value))
+                except Exception:
+                    print("Error detected")
     except KeyboardInterrupt:
         s.close()
-    except Exception:
-        print("Error detected")
