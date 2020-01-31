@@ -13,7 +13,8 @@ let corsOptions = {
 app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
-	res.end("Welcome on the inmoov controller, feel free to navigate the API at /devices and /browsers to learn more about the current state of the controller.")
+	res.status = 200
+	res.send("Welcome on the inmoov controller, feel free to navigate the API at /devices and /browsers to learn more about the current state of the controller.")
 })
 
 app.get('/devices', (req, res) => {

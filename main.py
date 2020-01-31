@@ -5,7 +5,7 @@ import json
 
 # robot = ServoKit(channels=16)
 
-HOST = "34.95.47.109"
+HOST = "35.203.38.198"
 PORT = 4000
 
 def moveServo(id, angle):
