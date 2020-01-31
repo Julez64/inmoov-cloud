@@ -32,6 +32,13 @@ app.post('/thumbs-up', (req, res) => {
 	}
 })
 
+app.post('/fuck-you', (req, res) => {
+	let socket = sockets[0]
+	if (socket !== undefined) {
+		socket.socket.write(JSON.stringify({mouvement: "FuckYou"}))
+	}
+})
+
 let sockets = []
 let websockets = []
 
