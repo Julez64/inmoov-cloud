@@ -7,11 +7,14 @@ import sys
 robot = ServoKit(channels=16)
 
 HOST = sys.argv[1] or '127.0.0.1'
-PORT = int(sys.argv[2]) or  4000
+PORT = int(sys.argv[2]) or 4000
+
 
 def moveServo(id, angle):
-    print("Recieved command: Channel {ch} to angle {angle}".format(ch=id, angle=angle))
+    print("Recieved command: Channel {ch} to angle {angle}".format(
+        ch=id, angle=angle))
     robot.servo[id].angle = angle
+
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
@@ -32,5 +35,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     except KeyboardInterrupt:
         s.close()
-	except Exception:
-		print("Error detected")
+    except Exception:
+        print("Error detected")
