@@ -32,3 +32,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     except KeyboardInterrupt:
         s.close()
+	except Exception:
+		print("Error detected")
