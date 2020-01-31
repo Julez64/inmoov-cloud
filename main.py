@@ -1,4 +1,4 @@
-from adafruit_servokit import ServoKit
+#from adafruit_servokit import ServoKit
 import time
 import socket
 import json
@@ -16,6 +16,15 @@ def moveServo(id, angle):
     robot.servo[id].angle = angle
 
 
+def doMove(move):
+    print(move)
+    if move == "ThumbsUp":
+        moveServo(0, 0)
+        moveServo(1, 180)
+        moveServo(2, 180)
+        moveServo(3, 180)
+        moveServo(4, 180)
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
         s.connect((HOST, PORT))
@@ -23,15 +32,20 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print("Connected: {addr}".format(addr=s.getsockname()))
 
             while True:
-                data = s.recv(1024)
+                data = s.recv(2048)
                 if not data:
                     break
                 try:
-                    jdata = json.loads(data.decode('utf-8'))
-                    id = jdata['id']
-                    value = jdata['value']
-                    moveServo(int(id), int(value))
-                except Exception:
-                    print("Error detected")
+                    decodedData = data.decode('utf-8')
+                    if "mouvement" in decodedData:
+                        data = json.loads(decodedData)
+                        doMove(data['mouvement'])
+                    else:
+                        jdata = json.loads(decodedData)
+                        id = jdata['id']
+                        value = jdata['value']
+                        moveServo(int(id), int(value))
+                except Exception as e:
+                    print(e)
     except KeyboardInterrupt:
         s.close()

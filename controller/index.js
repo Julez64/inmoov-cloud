@@ -25,6 +25,13 @@ app.get('/browsers', (req, res) => {
 	res.json(websockets)
 })
 
+app.post('/thumbs-up', (req, res) => {
+	let socket = sockets[0]
+	if (socket !== undefined) {
+		socket.socket.write(JSON.stringify({mouvement: "ThumbsUp"}))
+	}
+})
+
 let sockets = []
 let websockets = []
 
