@@ -2,11 +2,12 @@
 import time
 import socket
 import json
+import sys
 
 # robot = ServoKit(channels=16)
 
-HOST = "35.203.38.198"
-PORT = 4000
+HOST = sys.argv[1] or '127.0.0.1'
+PORT = sys.argv[2] or  4000
 
 def moveServo(id, angle):
     print("Recieved command: Channel {ch} to angle {angle}".format(ch=id, angle=angle))
