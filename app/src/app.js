@@ -6,7 +6,7 @@ export default class App extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			endpoint: 'http://localhost:4000',
+			endpoint: 'http://localhost:8080',
 			socket: undefined,
 			zoneId: '',
 			zoneName: '',

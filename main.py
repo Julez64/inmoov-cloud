@@ -8,8 +8,8 @@ import sys
 robot = ServoKit(channels=16)
 
 #Adresse et port pour le socket
-HOST = sys.argv[1] or '127.0.0.1'
-PORT = int(sys.argv[2]) or 4000
+HOST = '127.0.0.1'
+PORT = 4000
 
 #Permet de faire bouger le servomoteur
 def moveServo(id, angle):
