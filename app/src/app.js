@@ -6,7 +6,7 @@ export default class App extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			endpoint: 'http://inmoov-controller.hosthive.io',
+			endpoint: 'http://localhost:4000',
 			socket: undefined,
 			zoneId: '',
 			zoneName: '',
